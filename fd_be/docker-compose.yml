@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  # omegafooddelivery:
+  #   image: omegafooddelivery
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile
+  #   environment:
+  #     NODE_ENV: production
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - .:/usr/src/app
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes: 
+      - ~/mongo/data:/data/db
+      # - data:/data/db
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - 6379:6379
+    command: redis-server --save 60 1 --loglevel warning
+    volumes: 
+      - data:/data
+  # influx:
+  #   image: influxdb
+  #   ports: 
+  #     - "8086:8086"
+  #   volumes:
+  #     - influx-data
+  # grafana:
+  #   image: grafana/grafana
+  #   ports: 
+  #     - "80:3000"
+  #   depends_on:
+  #     - redis
+  #     - influx
+  #   volumes:
+  #     - grafana-data:/var/lib/grafana
+  
+
+volumes:
+  data:
