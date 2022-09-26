@@ -63,5 +63,4 @@ components\     # React Components
 pages\          # Nextjs pages and routes
 app.js          # Express app
 index.js        # App entry point
-```
-# omega-food-delivery
+
